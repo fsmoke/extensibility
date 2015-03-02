@@ -1,0 +1,13 @@
+
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<!-- Properties -->
+	<ItemGroup>
+		<PropertyPageSchema Include="XC8.Items.xml"/>
+		<PropertyPageSchema Include="XC8.General.xml">
+			<Context>Project</Context>
+		</PropertyPageSchema>
+		<PropertyPageSchema Include="XC8.General.PS.xml">
+			<Context>PropertySheet</Context>
+		</PropertyPageSchema>
+	</ItemGroup>
+</Project>

@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Rule
+      Name="ConfigurationGeneral"
+      DisplayName="General"
+      PageTemplate="generic"
+      Description="General"
+	  SwitchPrefix="-"
+      xmlns="http://schemas.microsoft.com/build/2009/properties">
+
+	<Rule.Categories>
+		<Category Name="General" DisplayName="General" Description="General" />
+		<Category Name="ProjectDefaults" DisplayName="Project Defaults" Description="Project Defaults" />
+	</Rule.Categories>
+	<Rule.DataSource>
+			<DataSource Persistence="ProjectFile" Label="Configuration" />
+	</Rule.DataSource>
+
+	<!-- General -->
+	<StringProperty Name="OutDir" DisplayName="Output Directory"
+				  Description="Specifies a relative path to the output file directory; can include environment variables."
+				  Category="General" Default="$(SolutionDir)$(Configuration)\"
+				  Subtype="folder"
+				  F1Keyword="VC.Project.VCConfiguration.OutputDirectory">
+		<StringProperty.DataSource>
+			<DataSource Persistence="ProjectFile" Label="" />
+		</StringProperty.DataSource>
+	</StringProperty>
+	<StringProperty Name="IntDir" DisplayName="Intermediate Directory"
+				  Description="Specifies a relative path to the intermediate file directory; can include environment variables."
+				  Category="General" Default="$(Configuration)\"
+				  Subtype="folder"
+				  F1Keyword="VC.Project.VCConfiguration.IntermediateDirectory">
+		<StringProperty.DataSource>
+			<DataSource Persistence="ProjectFile" Label="" />
+		</StringProperty.DataSource>
+	</StringProperty>
+	<StringProperty Name="TargetName" DisplayName="Target Name"
+				  Description="Specifies a file name that this project will generate."
+				  F1Keyword="VC.Project.VCConfiguration.TargetName"
+				  Category="General" Default="$(ProjectName)"
+				  >
+		<StringProperty.DataSource>
+			<DataSource Persistence="ProjectFile" Label="" />
+		</StringProperty.DataSource>
+	</StringProperty>
+	<StringListProperty Name="ExtensionsToDeleteOnClean" DisplayName="Extensions to Delete on Clean"
+						Description="Semi-colon delimited wildcard specification for which files in the intermediate directory to delete on clean or rebuild."
+						Category="General" 
+						Separator=";"
+						F1Keyword="VC.Project.VCConfiguration.DeleteExtensionsOnClean">
+		<StringListProperty.DataSource>
+			<DataSource Persistence="ProjectFile" Label="" />
+		</StringListProperty.DataSource>
+	</StringListProperty>
+	<StringProperty Name="BuildLogFile" DisplayName="Build Log File"
+					Description="Specifies the build log file to write to when build logging is enabled."
+					F1Keyword="VC.Project.VCConfiguration.BuildLogFile"
+					Category="General" 
+					Default="$(ProjectDir)\$(MSBuildProjectName).log"
+					Subtype="file">
+		<StringProperty.DataSource>
+			<DataSource Persistence="ProjectFile" ItemType="BuildLog" PersistedName="Path" />
+		</StringProperty.DataSource>
+	</StringProperty>
+
+	<StringProperty Name="Chip" DisplayName="Select Processor" 
+				Description="This option selects the processor target for compilation. A list of available processors can be obtained by using the chipinfo option." 
+				Category="ProjectDefaults"
+				Switch="-chip="/>
+	
+	<BoolProperty Name="QuietMode" DisplayName="Quiet Mode" 
+			Description="This option suppresses the Microchip copyright message, and any summary information usually printed by the compiler." 
+			Category="ProjectDefaults" 
+			Default="false" 
+			Switch="Q"/>
+			
+	<BoolProperty Name="VerboseMode" DisplayName="Verbose Mode" 
+				Description="This option is used to display the command lines used to invoke each of the compiler passes."
+				Category="ProjectDefaults" 
+				Default="false" 
+				Switch="V"/>
+</Rule>
